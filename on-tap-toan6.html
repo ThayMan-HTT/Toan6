@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="vi"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ôn tập Toán 6</title>
+<style>
+:root{--nen:#f3f5fa;--the:#fff;--chu:#17202e;--nhat:#5b6475;--xanh:#0a4f5c;--xanh2:#e3f1f3;--dung:#156b2e;--dung2:#e4f4e8;--sai:#b41c1c;--sai2:#fdecea;--cam:#c2410c;--cam2:#fff1e6;--vang:#fff6d6;--vien:#d5dce6}
+*{box-sizing:border-box}
+body{margin:0;background:var(--nen);color:var(--chu);font:17px/1.55 "Times New Roman",Georgia,serif}
+header{background:var(--xanh);color:#fff;padding:14px 16px;position:sticky;top:0;z-index:5}
+header h1{margin:0;font-size:19px}header p{margin:2px 0 0;font-size:13px;opacity:.9;font-family:Arial,sans-serif}
+main{max-width:680px;margin:0 auto;padding:14px 16px 96px}
+.the{background:var(--the);border:1px solid var(--vien);border-radius:14px;padding:14px;margin:0 0 12px}
+h2{font-size:18px;color:var(--xanh);margin:18px 0 8px}
+label,.nho{font-size:14px;color:var(--nhat);font-family:Arial,sans-serif}
+input[type=text]{width:100%;font-size:18px;padding:10px 12px;border:1.5px solid var(--vien);border-radius:10px;margin:4px 0 8px;font-family:inherit}
+input:focus{outline:2px solid var(--xanh);border-color:var(--xanh)}
+button{font:inherit;font-size:16px;cursor:pointer;border-radius:10px;border:1.5px solid var(--vien);background:#fff;padding:10px 14px;color:var(--chu)}
+.chinh{background:var(--xanh);color:#fff;border-color:var(--xanh);font-weight:700}
+.bai{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%;text-align:left}
+.bai b{display:block}.bai small{color:var(--nhat)}
+.diem{font-weight:700;color:var(--xanh);white-space:nowrap;font-family:Arial,sans-serif;font-size:14px}
+.nhan{display:inline-block;font-size:12px;padding:1px 8px;border-radius:20px;background:var(--xanh2);color:var(--xanh);margin-right:6px;font-family:Arial,sans-serif}
+.de{font-size:18px;margin:4px 0 10px}
+.y{display:flex;align-items:center;gap:8px;padding:8px 0;border-top:1px dashed var(--vien)}
+.y div{flex:1}.y button{min-width:58px;padding:8px}
+.y button.chon{background:var(--xanh);color:#fff;border-color:var(--xanh)}
+.chk{display:flex;gap:8px;align-items:flex-start;background:var(--vang);border-radius:10px;padding:8px 10px;margin-top:6px;font-size:15px}
+.chk input{width:22px;height:22px;margin-top:2px}
+.dieuhuong{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--vien);padding:10px 16px;display:flex;gap:8px;justify-content:center;z-index:5}
+.dieuhuong button{flex:1;max-width:260px}
+.kq-diem{font-size:48px;font-weight:800;color:var(--xanh);text-align:center;margin:0;font-family:Arial,sans-serif}
+.muc{display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:14px;font-family:Arial,sans-serif}
+.muc div{background:var(--nen);border-radius:8px;padding:6px 10px}
+.kq{border-left:6px solid var(--vien)}.kq.d{border-left-color:var(--dung)}.kq.s{border-left-color:var(--sai)}.kq.m{border-left-color:var(--cam)}
+.tag{font-weight:700;font-family:Arial,sans-serif;font-size:14px}.d .tag{color:var(--dung)}.s .tag{color:var(--sai)}.m .tag{color:var(--cam)}
+.nhac{background:var(--sai2);border-radius:10px;padding:8px 12px;margin-top:8px}
+.nhac b{color:var(--sai)}
+.giai{background:var(--dung2);border-radius:10px;padding:8px 12px;margin-top:8px}
+.giai table{width:100%;border-collapse:collapse}.giai td{padding:3px 4px;vertical-align:top;border-bottom:1px dotted #b9d8c1}
+.giai td:last-child{width:52px;text-align:right;color:var(--dung);font-weight:700;font-family:Arial,sans-serif;font-size:14px;white-space:nowrap}
+.yk{font-size:15px;padding:3px 0}
+details summary{cursor:pointer;color:var(--xanh);font-weight:700;margin-top:8px;font-family:Arial,sans-serif;font-size:15px}
+.ov{text-decoration:overline}
+.hang{display:flex;gap:8px;flex-wrap:wrap}.hang button{flex:1;min-width:150px}
+table.ls{width:100%;border-collapse:collapse;font-size:14px;font-family:Arial,sans-serif}table.ls td,table.ls th{border-bottom:1px solid var(--vien);padding:5px;text-align:left}
+.an{display:none}
+.buoc{counter-reset:b;padding-left:0;list-style:none;margin:6px 0 0}
+.buoc li{counter-increment:b;position:relative;padding-left:30px;margin:4px 0;font-size:16px}
+.buoc li:before{content:counter(b);position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;background:var(--xanh);color:#fff;font:700 13px/22px Arial;text-align:center}
+</style></head><body>
+<header><h1>Ôn tập Toán 6</h1><p>THCS Hoàng Tá Thốn · thầy Vũ Văn Mận</p></header>
+<main id="app"></main>
+<div class="dieuhuong an" id="dh"></div>
+<script>
+const DATA = [{"so": 1, "ten": "Tập hợp. Các phép tính trong tập hợp số tự nhiên", "phut": 45, "ds": [{"de": "Cho A = {x ∈ ℕ | 8 < x ≤ 13}. Mỗi khẳng định sau đúng hay sai?", "y": [["A = {9; 10; 11; 12; 13}", true, "x > 8 và x ≤ 13"], ["8 ∈ A", false, "x > 8 nên 8 ∉ A"], ["A có 5 phần tử", true, "13 − 9 + 1 = 5"], ["13 ∉ A", false, "x ≤ 13 nên 13 ∈ A"]]}, {"de": "Mỗi khẳng định sau đúng hay sai?", "y": [["Số La Mã XXIV có giá trị là 24", true, "XX + IV = 20 + 4"], ["Số liền trước của 1 000 là 999", true, "1 000 − 1"], ["Trong phép chia cho 5, số dư có thể bằng 5", false, "số dư luôn nhỏ hơn số chia"], ["25 · 4 · 37 = 3 700", true, "100 · 37"]]}], "tl": [{"bai": 1, "nhan": "a", "muc": "Biết", "chung": "", "de": "Viết tập hợp B các số tự nhiên lớn hơn 5 và nhỏ hơn 11 bằng hai cách.", "diem": 1.0, "loai": "tap", "dap": [6, 7, 8, 9, 10], "hoi": "Nhập các phần tử của B (cách liệt kê)", "dv": "", "giai": [["Cách 1: B = {6; 7; 8; 9; 10}.", 0.5], ["Cách 2: B = {x ∈ ℕ | 5 < x < 11}.", 0.5]], "loi": "Lấy cả 5 hoặc 11 (dấu < không lấy số ở hai đầu).", "tu": "Em đã viết được cách thứ hai (chỉ ra tính chất đặc trưng) trên giấy.", "tu_diem": 0.5}, {"bai": 1, "nhan": "b", "muc": "Biết", "chung": "", "de": "Tính nhanh: 125 · 7 · 8", "diem": 1.0, "loai": "so", "dap": 7000, "hoi": "Kết quả", "dv": "", "giai": [["125 · 7 · 8 = (125 · 8) · 7", 0.5], ["= 1 000 · 7 = 7 000.", 0.5]], "loi": "Nhân lần lượt từ trái sang dễ sai; ghép 125 · 8 = 1 000 trước.", "tu": "", "tu_diem": 0}, {"bai": 2, "nhan": "a", "muc": "Hiểu", "chung": "", "de": "Tính hợp lí: 28 · 64 + 28 · 36 − 800", "diem": 1.0, "loai": "so", "dap": 2000, "hoi": "Kết quả", "dv": "", "giai": [["28 · 64 + 28 · 36 − 800 = 28 · (64 + 36) − 800", 0.5], ["= 2 800 − 800 = 2 000.", 0.5]], "loi": "Đặt thừa số chung rồi quên trừ 800.", "tu": "", "tu_diem": 0}, {"bai": 2, "nhan": "b", "muc": "Hiểu", "chung": "", "de": "Tìm số tự nhiên x, biết: 5 · (x + 4) − 12 = 48", "diem": 1.0, "loai": "so", "dap": 8, "hoi": "x =", "dv": "", "giai": [["5 · (x + 4) = 48 + 12 = 60", 0.25], ["x + 4 = 60 : 5 = 12", 0.25], ["x = 12 − 4 = 8.", 0.25], ["Vậy x = 8.", 0.25]], "loi": "Lấy 48 − 12 (phải cộng: số bị trừ = hiệu + số trừ).", "tu": "", "tu_diem": 0}, {"bai": 2, "nhan": "c", "muc": "Hiểu", "chung": "", "de": "Tính số phần tử của tập hợp C = {7; 11; 15; …; 95}.", "diem": 1.0, "loai": "so", "dap": 23, "hoi": "Số phần tử", "dv": "", "giai": [["Các số cách đều nhau 4 đơn vị.", 0.25], ["Số phần tử: (95 − 7) : 4 + 1", 0.5], ["= 22 + 1 = 23.", 0.25]], "loi": "Quên «+ 1» nên ra 22.", "tu": "", "tu_diem": 0}, {"bai": 3, "nhan": "a", "muc": "Vận dụng", "chung": "Bà Hoa mua 3 kg thịt giá 140 000 đồng/kg và 5 kg gạo giá 22 000 đồng/kg. Bà đưa cô bán hàng 600 000 đồng.", "de": "Bà Hoa phải trả tất cả bao nhiêu tiền?", "diem": 1.0, "loai": "so", "dap": 530000, "hoi": "Số tiền (đồng)", "dv": "đồng", "giai": [["Tiền thịt: 3 · 140 000 = 420 000 (đồng).", 0.25], ["Tiền gạo: 5 · 22 000 = 110 000 (đồng).", 0.25], ["Tổng tiền: 420 000 + 110 000 = 530 000 (đồng).", 0.5]], "loi": "Quên nhân số ki-lô-gam với đơn giá.", "tu": "", "tu_diem": 0}, {"bai": 3, "nhan": "b", "muc": "Vận dụng", "chung": "Bà Hoa mua 3 kg thịt giá 140 000 đồng/kg và 5 kg gạo giá 22 000 đồng/kg. Bà đưa cô bán hàng 600 000 đồng.", "de": "Với số tiền được trả lại, bà muốn mua thêm 2 hộp sữa, mỗi hộp 38 000 đồng. Bà có đủ tiền không? Nếu không đủ thì còn thiếu bao nhiêu?", "diem": 1.0, "loai": "so", "dap": 6000, "hoi": "Số tiền còn thiếu (đồng)", "dv": "đồng", "giai": [["Tiền được trả lại: 600 000 − 530 000 = 70 000 (đồng).", 0.25], ["Tiền 2 hộp sữa: 2 · 38 000 = 76 000 (đồng).", 0.25], ["Vì 70 000 < 76 000 nên bà không đủ tiền,", 0.25], ["còn thiếu 76 000 − 70 000 = 6 000 (đồng).", 0.25]], "loi": "Chỉ tính một hộp sữa; hoặc kết luận «đủ» mà không so sánh.", "tu": "", "tu_diem": 0}, {"bai": 4, "nhan": "", "muc": "Vận dụng cao", "chung": "", "de": "Để đánh số trang một cuốn sách (bắt đầu từ trang 1), người ta dùng hết 435 chữ số. Hỏi cuốn sách có bao nhiêu trang?", "diem": 1.0, "loai": "so", "dap": 181, "hoi": "Số trang", "dv": "trang", "giai": [["Trang 1 đến 9 dùng 9 chữ số; trang 10 đến 99 dùng 90 · 2 = 180 chữ số; cộng lại 189 chữ số.", 0.25], ["Số chữ số dùng cho các trang có ba chữ số: 435 − 189 = 246.", 0.25], ["Số trang có ba chữ số: 246 : 3 = 82 (trang).", 0.25], ["Vậy cuốn sách có 99 + 82 = 181 trang.", 0.25]], "loi": "Lấy 435 : 3 ngay từ đầu; hoặc quên cộng 99 trang đầu.", "tu": "", "tu_diem": 0}]}, {"so": 2, "ten": "Luỹ thừa với số mũ tự nhiên. Thứ tự thực hiện phép tính", "phut": 45, "ds": [{"de": "Mỗi khẳng định sau đúng hay sai?", "y": [["2^{4} = 16", true, "2 · 2 · 2 · 2 = 16"], ["3^{2} = 6", false, "3^{2} = 3 · 3 = 9"], ["5^{0} = 1", true, "a^{0} = 1 với a ≠ 0"], ["10^{3} = 1 000", true, "1 và 3 chữ số 0"]]}, {"de": "Mỗi khẳng định sau đúng hay sai?", "y": [["2^{3} · 2^{4} = 2^{7}", true, "cộng số mũ"], ["3^{8} : 3^{2} = 3^{4}", false, "3^{8 − 2} = 3^{6}"], ["5^{2} · 5^{3} = 25^{5}", false, "= 5^{5}, giữ nguyên cơ số"], ["7^{6} : 7^{6} = 1", true, "7^{0} = 1"]]}], "tl": [{"bai": 1, "nhan": "a", "muc": "Biết", "chung": "", "de": "Viết tích 3 · 3 · 3 · 3 dưới dạng luỹ thừa rồi tính giá trị.", "diem": 1.0, "loai": "so", "dap": 81, "hoi": "Giá trị", "dv": "", "giai": [["3 · 3 · 3 · 3 = 3^{4}", 0.5], ["= 81.", 0.5]], "loi": "Viết 4^{3} (nhầm cơ số, số mũ) hoặc tính 3 · 4 = 12.", "tu": "", "tu_diem": 0}, {"bai": 1, "nhan": "b", "muc": "Biết", "chung": "", "de": "Viết kết quả dưới dạng một luỹ thừa: 2^{5} · 2^{3} : 2^{4}", "diem": 1.0, "loai": "so", "dap": 4, "hoi": "Kết quả có dạng 2^{n}, nhập số mũ n", "dv": "", "giai": [["2^{5} · 2^{3} : 2^{4} = 2^{8} : 2^{4}", 0.5], ["= 2^{4}.", 0.5]], "loi": "Nhân số mũ 5 · 3 thay vì cộng.", "tu": "", "tu_diem": 0}, {"bai": 2, "nhan": "a", "muc": "Hiểu", "chung": "", "de": "Tính: 4 · 5^{2} − 3 · 2^{3}", "diem": 1.0, "loai": "so", "dap": 76, "hoi": "Kết quả", "dv": "", "giai": [["= 4 · 25 − 3 · 8", 0.5], ["= 100 − 24 = 76.", 0.5]], "loi": "Tính 4 · 5 = 20 rồi mới bình phương.", "tu": "", "tu_diem": 0}, {"bai": 2, "nhan": "b", "muc": "Hiểu", "chung": "", "de": "Tính: 80 − [130 − (12 − 4)^{2}]", "diem": 1.0, "loai": "so", "dap": 14, "hoi": "Kết quả", "dv": "", "giai": [["= 80 − [130 − 8^{2}] = 80 − [130 − 64]", 0.5], ["= 80 − 66 = 14.", 0.5]], "loi": "Tính 12 − 4^{2} (bỏ ngoặc tròn).", "tu": "", "tu_diem": 0}, {"bai": 2, "nhan": "c", "muc": "Hiểu", "chung": "", "de": "Tìm số tự nhiên x, biết: 2^{x} · 4 = 128", "diem": 1.0, "loai": "so", "dap": 5, "hoi": "x =", "dv": "", "giai": [["2^{x} = 128 : 4 = 32", 0.5], ["2^{x} = 2^{5}", 0.25], ["x = 5.", 0.25]], "loi": "Lấy 128 : 4 rồi chia tiếp cho 2.", "tu": "", "tu_diem": 0}, {"bai": 3, "nhan": "a", "muc": "Vận dụng", "chung": "", "de": "Tìm số tự nhiên x, biết: 3 · (x + 2)^{2} − 5 = 70", "diem": 1.0, "loai": "so", "dap": 3, "hoi": "x =", "dv": "", "giai": [["3 · (x + 2)^{2} = 75", 0.25], ["(x + 2)^{2} = 25 = 5^{2}", 0.25], ["x + 2 = 5", 0.25], ["x = 3.", 0.25]], "loi": "Chia 70 cho 3 trước khi cộng 5.", "tu": "", "tu_diem": 0}, {"bai": 3, "nhan": "b", "muc": "Vận dụng", "chung": "", "de": "Một loại vi khuẩn cứ 20 phút lại tách đôi một lần. Ban đầu có 5 con. Hỏi sau 2 giờ có bao nhiêu con vi khuẩn?", "diem": 1.0, "loai": "so", "dap": 320, "hoi": "Số con", "dv": "con", "giai": [["2 giờ = 120 phút; số lần tách đôi: 120 : 20 = 6 (lần).", 0.25], ["Mỗi lần số vi khuẩn gấp đôi nên sau 6 lần có 5 · 2^{6} con.", 0.25], ["5 · 2^{6} = 5 · 64 = 320.", 0.25], ["Vậy sau 2 giờ có 320 con vi khuẩn.", 0.25]], "loi": "Tính 5 · 6 · 2 (nhân với số lần thay vì luỹ thừa) hoặc quên đổi giờ ra phút.", "tu": "", "tu_diem": 0}, {"bai": 4, "nhan": "", "muc": "Vận dụng cao", "chung": "", "de": "Tính tổng A = 1 + 3 + 3^{2} + 3^{3} + … + 3^{6}.", "diem": 1.0, "loai": "so", "dap": 1093, "hoi": "A =", "dv": "", "giai": [["3A = 3 + 3^{2} + … + 3^{6} + 3^{7}.", 0.25], ["3A − A = 3^{7} − 1, tức 2A = 2 187 − 1 = 2 186.", 0.5], ["Vậy A = 2 186 : 2 = 1 093.", 0.25]], "loi": "Quên chia 2 (vì 3A − A = 2A) hoặc quên trừ 1.", "tu": "", "tu_diem": 0}]}, {"so": 3, "ten": "Tính chia hết. Số nguyên tố. Ước chung, bội chung", "phut": 45, "ds": [{"de": "Cho các số 15; 21; 27; 30. Mỗi khẳng định sau đúng hay sai?", "y": [["Các số đã cho đều chia hết cho 3", true, "tổng chữ số chia hết cho 3"], ["Chỉ có một số chia hết cho 5", false, "15 và 30 đều chia hết cho 5"], ["Có đúng một số chia hết cho 9", true, "chỉ có 27"], ["Các số đã cho đều là hợp số", true, "đều có ước 3"]]}, {"de": "Mỗi khẳng định sau đúng hay sai?", "y": [["2 là số nguyên tố chẵn duy nhất", true, "mọi số chẵn khác 2 đều có ước 2"], ["1 là số nguyên tố", false, "1 chỉ có một ước"], ["36 = 2^{2} · 3^{2}", true, "4 · 9 = 36"], ["Ư(8) = {1; 2; 4}", false, "Ư(8) = {1; 2; 4; 8}"]]}], "tl": [{"bai": 1, "nhan": "a", "muc": "Biết", "chung": "", "de": "Tìm Ư(18).", "diem": 1.0, "loai": "tap", "dap": [1, 2, 3, 6, 9, 18], "hoi": "Nhập các phần tử của Ư(18)", "dv": "", "giai": [["18 chia hết cho 1; 2; 3; 6; 9; 18.", 0.5], ["Ư(18) = {1; 2; 3; 6; 9; 18}.", 0.5]], "loi": "Quên ước 1 hoặc chính nó (18).", "tu": "", "tu_diem": 0}, {"bai": 1, "nhan": "b", "muc": "Biết", "chung": "", "de": "Trong các số 1 236;  2 025;  3 690;  4 518, số nào chia hết cho cả 2, 3, 5 và 9?", "diem": 1.0, "loai": "so", "dap": 3690, "hoi": "Số đó là", "dv": "", "giai": [["Chia hết cho cả 2 và 5 thì tận cùng là 0: chỉ có 3 690.", 0.5], ["3 + 6 + 9 + 0 = 18 chia hết cho 9 (nên chia hết cho 3).", 0.25], ["Vậy số cần tìm là 3 690.", 0.25]], "loi": "Chọn 4 518 (chia hết cho 9 nhưng không chia hết cho 5).", "tu": "", "tu_diem": 0}, {"bai": 2, "nhan": "a", "muc": "Hiểu", "chung": "", "de": "Phân tích số 180 ra thừa số nguyên tố.", "diem": 1.0, "loai": "tap", "dap": [2, 3, 5], "hoi": "Nhập các thừa số nguyên tố của 180 (VD: 2; 3; 5)", "dv": "", "giai": [["180 = 2 · 2 · 3 · 3 · 5", 0.5], ["= 2^{2} · 3^{2} · 5.", 0.5]], "loi": "Viết 180 = 4 · 45 (4, 45 không phải số nguyên tố).", "tu": "Em đã viết đúng 180 = 2^{2} · 3^{2} · 5 (đủ số mũ).", "tu_diem": 0.5}, {"bai": 2, "nhan": "b", "muc": "Hiểu", "chung": "", "de": "Tìm ƯCLN(36, 84).", "diem": 1.0, "loai": "so", "dap": 12, "hoi": "ƯCLN(36, 84) =", "dv": "", "giai": [["36 = 2^{2} · 3^{2};  84 = 2^{2} · 3 · 7.", 0.5], ["ƯCLN(36, 84) = 2^{2} · 3 = 12.", 0.5]], "loi": "Lấy số mũ lớn nhất (đó là cách tìm BCNN).", "tu": "", "tu_diem": 0}, {"bai": 2, "nhan": "c", "muc": "Hiểu", "chung": "", "de": "Tìm BCNN(12, 15, 20).", "diem": 1.0, "loai": "so", "dap": 60, "hoi": "BCNN =", "dv": "", "giai": [["12 = 2^{2} · 3;  15 = 3 · 5;  20 = 2^{2} · 5.", 0.5], ["BCNN = 2^{2} · 3 · 5 = 60.", 0.5]], "loi": "Nhân cả ba số (3 600) hoặc quên thừa số riêng.", "tu": "", "tu_diem": 0}, {"bai": 3, "nhan": "a", "muc": "Vận dụng", "chung": "", "de": "Có 60 quyển vở và 84 bút chì, chia đều thành các phần thưởng như nhau. Chia được nhiều nhất bao nhiêu phần thưởng?", "diem": 1.0, "loai": "so", "dap": 12, "hoi": "Số phần thưởng", "dv": "phần", "giai": [["Số phần thưởng nhiều nhất là ƯCLN(60, 84).", 0.25], ["60 = 2^{2} · 3 · 5;  84 = 2^{2} · 3 · 7.", 0.25], ["ƯCLN(60, 84) = 2^{2} · 3 = 12.", 0.25], ["Vậy chia được nhiều nhất 12 phần thưởng.", 0.25]], "loi": "Dùng BCNN thay cho ƯCLN.", "tu": "", "tu_diem": 0}, {"bai": 3, "nhan": "b", "muc": "Vận dụng", "chung": "", "de": "Số học sinh khối 6 trong khoảng 200 đến 250. Xếp hàng 10, hàng 12, hàng 15 đều vừa đủ. Tính số học sinh khối 6.", "diem": 1.0, "loai": "so", "dap": 240, "hoi": "Số học sinh", "dv": "học sinh", "giai": [["Số học sinh là bội chung của 10; 12; 15.", 0.25], ["BCNN(10, 12, 15) = 2^{2} · 3 · 5 = 60.", 0.25], ["BC = {0; 60; 120; 180; 240; 300; …}; trong khoảng 200 đến 250 có 240.", 0.25], ["Vậy khối 6 có 240 học sinh.", 0.25]], "loi": "Dừng ở BCNN = 60 mà không chọn bội trong khoảng.", "tu": "", "tu_diem": 0}, {"bai": 4, "nhan": "", "muc": "Vận dụng cao", "chung": "", "de": "Tìm số tự nhiên nhỏ nhất chia cho 4 dư 3, chia cho 5 dư 4, chia cho 6 dư 5.", "diem": 1.0, "loai": "so", "dap": 59, "hoi": "Số đó là", "dv": "", "giai": [["Gọi số cần tìm là x thì x + 1 chia hết cho 4; 5 và 6.", 0.25], ["x + 1 nhỏ nhất khác 0 nên x + 1 = BCNN(4, 5, 6) = 60.", 0.5], ["Vậy x = 59.", 0.25]], "loi": "Lấy x − 3, x − 4, x − 5 riêng rẽ; không nhận ra x + 1 chia hết cho cả ba số.", "tu": "", "tu_diem": 0}]}, {"so": 4, "ten": "Các hình phẳng trong thực tiễn", "phut": 45, "ds": [{"de": "Cho hình chữ nhật ABCD có AB = 8 cm, BC = 6 cm. Mỗi khẳng định sau đúng hay sai?", "y": [["CD = 8 cm và AD = 6 cm", true, "cạnh đối bằng nhau"], ["AC = BD", true, "hai đường chéo bằng nhau"], ["Chu vi hình chữ nhật ABCD là 14 cm", false, "2 · (8 + 6) = 28 cm"], ["Diện tích hình chữ nhật ABCD là 48 cm^{2}", true, "8 · 6 = 48"]]}, {"de": "Mỗi khẳng định sau đúng hay sai?", "y": [["Hình thoi có bốn cạnh bằng nhau", true, "định nghĩa hình thoi"], ["Hình thoi có hai đường chéo bằng nhau", false, "chỉ vuông góc"], ["Lục giác đều có 3 đường chéo chính", true, "AD, BE, CF"], ["Hình thang cân có hai đường chéo vuông góc", false, "hai đường chéo bằng nhau"]]}], "tl": [{"bai": 1, "nhan": "a", "muc": "Biết", "chung": "", "de": "Tính chu vi hình vuông có cạnh 7 cm.", "diem": 1.0, "loai": "so", "dap": 28, "hoi": "Chu vi (cm)", "dv": "cm", "giai": [["C = 4 · 7", 0.5], ["= 28 (cm).", 0.5]], "loi": "Tính diện tích 7 · 7 thay cho chu vi.", "tu": "", "tu_diem": 0}, {"bai": 1, "nhan": "b", "muc": "Biết", "chung": "", "de": "Tính diện tích hình bình hành có cạnh đáy 12 cm, chiều cao tương ứng 5 cm.", "diem": 1.0, "loai": "so", "dap": 60, "hoi": "Diện tích (cm²)", "dv": "cm²", "giai": [["S = 12 · 5", 0.5], ["= 60 (cm^{2}).", 0.5]], "loi": "Chia 2 như hình tam giác.", "tu": "", "tu_diem": 0}, {"bai": 2, "nhan": "a", "muc": "Hiểu", "chung": "", "de": "Tính diện tích hình thoi có hai đường chéo dài 16 cm và 10 cm.", "diem": 1.0, "loai": "so", "dap": 80, "hoi": "Diện tích (cm²)", "dv": "cm²", "giai": [["S = 16 · 10 : 2", 0.5], ["= 80 (cm^{2}).", 0.5]], "loi": "Quên chia 2.", "tu": "", "tu_diem": 0}, {"bai": 2, "nhan": "b", "muc": "Hiểu", "chung": "", "de": "Tính diện tích hình thang cân có hai đáy 6 cm và 14 cm, chiều cao 5 cm.", "diem": 1.0, "loai": "so", "dap": 50, "hoi": "Diện tích (cm²)", "dv": "cm²", "giai": [["S = (6 + 14) · 5 : 2", 0.5], ["= 50 (cm^{2}).", 0.5]], "loi": "Quên chia 2 hoặc nhân cả hai đáy với nhau.", "tu": "", "tu_diem": 0}, {"bai": 2, "nhan": "c", "muc": "Hiểu", "chung": "", "de": "Hình chữ nhật có diện tích 96 m^{2}, chiều dài 12 m. Tính chu vi.", "diem": 1.0, "loai": "so", "dap": 40, "hoi": "Chu vi (m)", "dv": "m", "giai": [["Chiều rộng: 96 : 12 = 8 (m).", 0.5], ["Chu vi: 2 · (12 + 8) = 40 (m).", 0.5]], "loi": "Lấy 12 + 8 = 20 (quên nhân 2).", "tu": "", "tu_diem": 0}, {"bai": 3, "nhan": "a", "muc": "Vận dụng", "chung": "Nền một phòng học hình chữ nhật dài 6 m, rộng 5 m được lát bằng gạch hình vuông cạnh 50 cm.", "de": "Cần bao nhiêu viên gạch để lát kín nền phòng?", "diem": 1.0, "loai": "so", "dap": 120, "hoi": "Số viên", "dv": "viên", "giai": [["Diện tích nền: 6 · 5 = 30 (m^{2}) = 300 000 (cm^{2}).", 0.25], ["Diện tích một viên: 50 · 50 = 2 500 (cm^{2}).", 0.25], ["Số viên: 300 000 : 2 500 = 120 (viên).", 0.5]], "loi": "Không đổi m^{2} sang cm^{2}.", "tu": "", "tu_diem": 0}, {"bai": 3, "nhan": "b", "muc": "Vận dụng", "chung": "Nền một phòng học hình chữ nhật dài 6 m, rộng 5 m được lát bằng gạch hình vuông cạnh 50 cm.", "de": "Mỗi viên gạch giá 35 000 đồng, tiền công lát 60 000 đồng/m^{2}. Tính tổng chi phí lát nền.", "diem": 1.0, "loai": "so", "dap": 6000000, "hoi": "Tổng chi phí (đồng)", "dv": "đồng", "giai": [["Tiền gạch: 120 · 35 000 = 4 200 000 (đồng).", 0.25], ["Tiền công: 30 · 60 000 = 1 800 000 (đồng).", 0.25], ["Tổng chi phí: 4 200 000 + 1 800 000 = 6 000 000 (đồng).", 0.5]], "loi": "Nhân tiền công với số viên gạch.", "tu": "", "tu_diem": 0}, {"bai": 4, "nhan": "", "muc": "Vận dụng cao", "chung": "", "de": "Mảnh vườn hình chữ nhật có chu vi 64 m, chiều dài hơn chiều rộng 8 m. Người ta làm lối đi rộng 1 m chạy sát bên trong hàng rào, quanh vườn. Tính diện tích phần vườn còn lại.", "diem": 1.0, "loai": "so", "dap": 180, "hoi": "Diện tích (m²)", "dv": "m²", "giai": [["Nửa chu vi 32 m; chiều dài (32 + 8) : 2 = 20 (m), chiều rộng 12 m.", 0.25], ["Phần còn lại là hình chữ nhật dài 20 − 2 = 18 (m), rộng 12 − 2 = 10 (m).", 0.5], ["Diện tích phần còn lại: 18 · 10 = 180 (m^{2}).", 0.25]], "loi": "Chỉ trừ 1 m mỗi chiều (lối đi ở cả hai phía).", "tu": "", "tu_diem": 0}]}];
+const KHOA = "ontap_toan6_2026_v1";
+const DS_DIEM = [0,0.1,0.25,0.5,1];
+let st = {ma:"", lop:"", bai:null, ds:[], tl:[], tu:[], chi:null};
+const $ = s => document.querySelector(s);
+function doc(){ try{ return JSON.parse(localStorage.getItem(KHOA)) || {ls:[]}; }catch(e){ return {ls:[]}; } }
+function ghi(d){ try{ localStorage.setItem(KHOA, JSON.stringify(d)); }catch(e){} }
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+function m(s){ return esc(s).replace(/\^\{([^}]*)\}/g,"<sup>$1</sup>").replace(/ov\{([^}]*)\}/g,'<span class="ov">$1</span>'); }
+function so(x){ return (Math.round(x*100)/100).toString().replace(".", ","); }
+function nghin(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g," "); }
+function gopNghin(s){ let t=String(s||""); for(let k=0;k<4;k++) t=t.replace(/(\d)[\s. ](\d{3})(?!\d)/g,"$1$2"); return t; }
+function docSo(s){ s=String(s||"").trim(); if(!s) return null; if(/\d,\d/.test(s)) return NaN;
+  const a = gopNghin(s).match(/\d+/g); if(!a || a.length!==1) return NaN; return parseInt(a[0],10); }
+function docTap(s){ const a = String(s||"").replace(/[^\d;,\s]/g," ").match(/\d+/g); if(!a) return null; return [...new Set(a.map(Number))].sort((x,y)=>x-y); }
+function tlTrong(i,v){ const c=st.bai.tl[i]; return v===null||v===undefined||String(v).trim()===""; }
+function chamDS(c, tl){ if(!tl) return {k:0,d:0}; let k=0; c.y.forEach((y,j)=>{ if(tl[j]===y[1]) k++; }); return {k, d:DS_DIEM[k]}; }
+function dungKQ(c, v){
+  if(c.loai==="tap"){ const a=docTap(v); return !!a && a.length===c.dap.length && a.every((x,j)=>x===c.dap[j]); }
+  return docSo(v)===c.dap; }
+function chamTL(c, v, tu){
+  if(c.loai==="tap"){ let d = dungKQ(c,v) ? c.diem - (c.tu ? c.tu_diem : 0) : 0; if(c.tu && tu) d += c.tu_diem; return d; }
+  return dungKQ(c,v) ? c.diem : 0; }
+function dapAn(c){ if(c.loai==="tap") return "{"+c.dap.join("; ")+"}"; return nghin(c.dap)+(c.dv?" "+c.dv:""); }
+function tenY(c){ return "Bài "+c.bai+(c.nhan?c.nhan+")":""); }
+
+function trangDau(){
+  $("#dh").classList.add("an");
+  const d = doc(); st.ma = st.ma || d.ma || ""; st.lop = st.lop || d.lop || "";
+  let h = `<div class="the"><label>Mã học sinh (thầy phát, VD: HS07) — không ghi họ tên</label>
+  <input type="text" id="ma" value="${esc(st.ma)}" placeholder="HS07" autocomplete="off">
+  <label>Lớp</label><input type="text" id="lop" value="${esc(st.lop)}" placeholder="6A7" autocomplete="off"></div>
+  <div class="the"><b>Cách làm</b><ol class="buoc">
+   <li>Làm bài trên <b>tờ đề A4</b>, trình bày đủ các bước như trên lớp (không mở app khi đang làm).</li>
+   <li>Làm xong mới mở app: chọn Đúng/Sai từng ý, điền <b>kết quả cuối cùng</b> của từng ý tự luận.</li>
+   <li>Bấm <b>Nộp bài</b>: máy chấm, chỉ ra câu sai, lời nhắc chỗ hay sai và lời giải trình bày mẫu có biểu điểm.</li>
+   <li>Sửa câu sai vào vở bằng bút màu, bấm <b>Chép kết quả</b> gửi thầy qua Zalo.</li></ol></div>`;
+  DATA.forEach(b=>{
+    const ls = d.ls.filter(x=>x.bai===b.so && !x.lai);
+    const tot = ls.length ? Math.max(...ls.map(x=>x.diem)) : null;
+    h += `<button class="the bai" onclick="batDau(${b.so})"><span><b>Bài ${b.so}</b><small>${esc(b.ten)} · ${b.phut} phút</small></span>
+      <span class="diem">${tot===null?"Chưa làm":"Cao nhất "+so(tot)}</span></button>`;
+  });
+  if(d.ls.length){
+    h += `<div class="the"><b>Các lần đã làm</b><table class="ls"><tr><th>Ngày</th><th>Bài</th><th>Điểm</th><th>Câu sai</th></tr>`;
+    d.ls.slice(-12).reverse().forEach(x=>{ h += `<tr><td>${esc(x.ngay)}</td><td>${x.bai}${x.lai?" (làm lại)":""}</td><td>${so(x.diem)}</td><td>${esc(x.sai.join(", ")||"—")}</td></tr>`; });
+    h += `</table></div>`;
+  }
+  h += `<p class="nho">App chỉ lưu mã HS và điểm trên chính điện thoại này, không gửi đi đâu. Điểm trên app là điểm kết quả; thầy chấm lại phần trình bày trên giấy.</p>`;
+  $("#app").innerHTML = h; window.scrollTo(0,0);
+}
+function luuTen(){ const d=doc(); d.ma=st.ma=$("#ma").value.trim().toUpperCase(); d.lop=st.lop=$("#lop").value.trim().toUpperCase(); ghi(d); }
+function batDau(so_, chi){
+  if($("#ma")){ luuTen(); if(!st.ma){ alert("Em nhập mã học sinh trước nhé."); $("#ma").focus(); return; } }
+  st.bai = DATA.find(b=>b.so===so_); st.chi = chi || null;
+  st.ds = st.bai.ds.map(()=>[null,null,null,null]); st.tl = st.bai.tl.map(()=>""); st.tu = st.bai.tl.map(()=>false);
+  veBai();
+}
+function coLam(loai,i){ return !st.chi || st.chi[loai].includes(i); }
+function veBai(){
+  const b = st.bai;
+  let h = `<div class="the"><span class="nhan">Bài ${b.so}</span><b>${esc(b.ten)}</b>
+   <div class="nho">${st.chi?"Làm lại các câu sai":"Phần I: 2,0 điểm · Phần II: 8,0 điểm"} · Mã ${esc(st.ma)}</div></div>`;
+  if(b.ds.some((_,i)=>coLam("ds",i))) h += `<h2>Phần I. Đúng – Sai</h2>`;
+  b.ds.forEach((c,i)=>{ if(!coLam("ds",i)) return;
+    h += `<div class="the"><div class="de"><b>Câu ${i+1}.</b> ${m(c.de)}</div>`;
+    c.y.forEach((y,j)=>{ const v=st.ds[i][j];
+      h += `<div class="y"><div>${"abcd"[j]}) ${m(y[0])}</div>
+       <button class="${v===true?"chon":""}" onclick="chonDS(${i},${j},true)">Đúng</button>
+       <button class="${v===false?"chon":""}" onclick="chonDS(${i},${j},false)">Sai</button></div>`; });
+    h += `</div>`; });
+  let bai0 = 0;
+  if(b.tl.some((_,i)=>coLam("tl",i))) h += `<h2>Phần II. Tự luận — điền kết quả cuối cùng</h2>`;
+  b.tl.forEach((c,i)=>{ if(!coLam("tl",i)) return;
+    h += `<div class="the"><span class="nhan">${esc(c.muc)} · ${so(c.diem)} đ</span>`;
+    if(c.bai!==bai0 && c.chung) h += `<div class="de"><b>Bài ${c.bai}.</b> ${m(c.chung)}</div>`;
+    bai0 = c.bai;
+    h += `<div class="de"><b>${tenY(c)}.</b> ${m(c.de)}</div>
+      <label>${esc(c.hoi)}${c.dv?" ("+esc(c.dv)+")":""}</label>
+      <input type="text" inputmode="${c.loai==="tap"?"text":"numeric"}" value="${esc(st.tl[i])}" oninput="st.tl[${i}]=this.value" placeholder="${c.loai==="tap"?"VD: 6; 7; 8":"Chỉ ghi số"}">`;
+    if(c.tu) h += `<label class="chk"><input type="checkbox" ${st.tu[i]?"checked":""} onchange="st.tu[${i}]=this.checked">
+      <span>${m(c.tu)}</span></label>`;
+    h += `</div>`; });
+  $("#app").innerHTML = h;
+  $("#dh").classList.remove("an");
+  $("#dh").innerHTML = `<button onclick="if(confirm('Thoát? Bài đang làm sẽ không được lưu.'))trangDau()">Thoát</button><button class="chinh" onclick="nop()">Nộp bài</button>`;
+  window.scrollTo(0,0);
+}
+function chonDS(i,j,v){ st.ds[i][j]=v; const y=window.scrollY; veBai(); window.scrollTo(0,y); }
+function nop(){
+  const b = st.bai; let thieu = [];
+  b.ds.forEach((c,i)=>{ if(coLam("ds",i) && st.ds[i].some(v=>v===null)) thieu.push("Câu "+(i+1)); });
+  b.tl.forEach((c,i)=>{ if(coLam("tl",i) && tlTrong(i,st.tl[i])) thieu.push(tenY(c)); });
+  if(thieu.length && !confirm("Em còn bỏ trống: "+thieu.join(", ")+". Vẫn nộp bài?")) return;
+  let tong=0, p1=0, p2=0, sai=[], kq=[];
+  b.ds.forEach((c,i)=>{ if(!coLam("ds",i)) return; const r=chamDS(c,st.ds[i]); p1+=r.d; if(r.k<4) sai.push("Câu "+(i+1)); kq.push({loai:"ds",i,r}); });
+  b.tl.forEach((c,i)=>{ if(!coLam("tl",i)) return; const d=chamTL(c,st.tl[i],st.tu[i]); p2+=d; if(d<c.diem) sai.push(tenY(c)); kq.push({loai:"tl",i,d}); });
+  tong = p1+p2;
+  const dd = doc();
+  dd.ls.push({ngay:new Date().toLocaleDateString("vi-VN"), bai:b.so, diem:tong, sai, lai:!!st.chi});
+  ghi(dd);
+  veKQ(tong,p1,p2,sai,kq);
+}
+function veKQ(tong,p1,p2,sai,kq){
+  const b = st.bai;
+  let h = `<div class="the"><div class="nho" style="text-align:center">Mã ${esc(st.ma)} · Lớp ${esc(st.lop)} · Bài ${b.so}${st.chi?" (làm lại)":""}</div>
+   <p class="kq-diem">${so(tong)}${st.chi?"":" / 10"}</p>
+   <div class="muc"><div>Phần I (Đúng – Sai): <b>${so(p1)}</b></div><div>Phần II (tự luận): <b>${so(p2)}</b></div></div>
+   <p class="nho">${sai.length?"Câu chưa đúng: "+esc(sai.join(", "))+". Đọc lời nhắc, đối chiếu lời giải mẫu, sửa vào vở bằng bút màu.":"Tuyệt vời! Em làm đúng hết. Đối chiếu lời giải mẫu để chắc phần trình bày được điểm tối đa."}</p></div>`;
+  kq.forEach(x=>{
+    if(x.loai==="ds"){ const c=b.ds[x.i], tl=st.ds[x.i], cls=x.r.k===4?"d":(x.r.k>=2?"m":"s");
+      h += `<div class="the kq ${cls}"><span class="tag">Câu ${x.i+1} · đúng ${x.r.k}/4 ý · ${so(x.r.d)} đ</span><div class="de">${m(c.de)}</div>`;
+      c.y.forEach((y,j)=>{ const ok = tl[j]===y[1];
+        h += `<div class="yk">${ok?"✅":"❌"} ${"abcd"[j]}) ${m(y[0])} — <b>${y[1]?"Đúng":"Sai"}</b>${ok?"":` <span class="nho">(em chọn ${tl[j]===null?"—":(tl[j]?"Đúng":"Sai")})</span>`}<br><span class="nho">Vì: ${m(y[2])}</span></div>`; });
+      h += `</div>`;
+    } else { const c=b.tl[x.i], ok = x.d>=c.diem, cls = ok?"d":(x.d>0?"m":"s");
+      h += `<div class="the kq ${cls}"><span class="tag">${tenY(c)} · ${so(x.d)}/${so(c.diem)} đ</span>
+        <div class="de">${c.chung?m(c.chung)+" ":""}${m(c.de)}</div>
+        <div class="nho">Em ghi: <b>${esc(st.tl[x.i]||"(bỏ trống)")}</b> · Đáp số: <b>${esc(dapAn(c))}</b></div>`;
+      if(!ok) h += `<div class="nhac"><b>Chú ý chỗ hay sai:</b> ${m(c.loi)}</div>`;
+      h += `<details ${ok?"":"open"}><summary>Lời giải trình bày mẫu và biểu điểm</summary><div class="giai"><table>`;
+      c.giai.forEach(g=>{ h += `<tr><td>${m(g[0])}</td><td>${so(g[1])} đ</td></tr>`; });
+      h += `</table></div></details></div>`;
+    } });
+  h += `<div class="hang">${sai.length?`<button class="chinh" onclick="lamLai()">Làm lại câu sai</button>`:""}
+    <button onclick="chep(${tong},'${esc(sai.join(", "))}')">Chép kết quả gửi thầy</button></div>`;
+  $("#app").innerHTML = h;
+  $("#dh").innerHTML = `<button onclick="trangDau()">Về trang đầu</button>`;
+  st._kq = kq; window.scrollTo(0,0);
+}
+function lamLai(){
+  const b = st.bai, ds=[], tl=[];
+  st._kq.forEach(x=>{ if(x.loai==="ds" && x.r.k<4) ds.push(x.i); if(x.loai==="tl" && x.d<b.tl[x.i].diem) tl.push(x.i); });
+  batDau(b.so, {ds, tl});
+}
+function chep(t, sai){
+  const s = `Ôn tập Toán 6 · Bài ${st.bai.so}${st.chi?" (làm lại)":""} · Mã ${st.ma} · Lớp ${st.lop} · Điểm app: ${so(t)} · Câu sai: ${sai||"không"} · ${new Date().toLocaleString("vi-VN")}`;
+  if(navigator.clipboard) navigator.clipboard.writeText(s).then(()=>alert("Đã chép. Mở Zalo, dán vào nhóm lớp gửi thầy."), ()=>prompt("Chép dòng này:", s));
+  else prompt("Chép dòng này:", s);
+}
+(function(){ const q = new URLSearchParams(location.search).get("bai"); const d=doc(); trangDau();
+  if(q && d.ma && DATA.find(b=>b.so===+q)){ st.ma=d.ma; st.lop=d.lop||""; batDau(+q); } })();
+</script></body></html>
