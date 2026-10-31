@@ -83,8 +83,8 @@ function tenY(c){ return "Bài "+c.bai+(c.nhan?c.nhan+")":""); }
 function trangDau(){
   $("#dh").classList.add("an");
   const d = doc(); st.ma = st.ma || d.ma || ""; st.lop = st.lop || d.lop || "";
-  let h = `<div class="the"><label>Mã học sinh (thầy phát, VD: HS07) — không ghi họ tên</label>
-  <input type="text" id="ma" value="${esc(st.ma)}" placeholder="HS07" autocomplete="off">
+  let h = `<div class="the"><label>Mã học sinh (thầy phát, VD: TOAN7) — không ghi họ tên</label>
+  <input type="text" id="ma" value="${esc(st.ma)}" placeholder="TOAN7" autocomplete="off" autocapitalize="characters">
   <label>Lớp</label><input type="text" id="lop" value="${esc(st.lop)}" placeholder="6A7" autocomplete="off"></div>
   <div class="the"><b>Cách làm</b><ol class="buoc">
    <li><b>Bài kiểm tra:</b> làm trên tờ đề A4. <b>Bài về nhà:</b> chép đề (trên app hoặc phiếu thầy phát) và làm vào vở. Trình bày đủ các bước như trên lớp.</li>
@@ -106,9 +106,17 @@ function trangDau(){
   h += `<p class="nho">App chỉ lưu mã HS và điểm trên chính điện thoại này, không gửi đi đâu. Điểm trên app là điểm kết quả; thầy chấm lại phần trình bày trên giấy.</p>`;
   $("#app").innerHTML = h; window.scrollTo(0,0);
 }
-function luuTen(){ const d=doc(); d.ma=st.ma=$("#ma").value.trim().toUpperCase(); d.lop=st.lop=$("#lop").value.trim().toUpperCase(); ghi(d); }
+const MA_TOI_DA = 40;   // lớp đông hơn thì tăng số này
+// «toán 07», «Toan-7», «TOAN 7» → «TOAN7»; mã cũ HS07 vẫn nhận. Sai mẫu → ""
+function chuanMa(s){
+  const t = String(s||"").normalize("NFD").replace(/[̀-ͯ]/g,"").replace(/đ/gi,"D").toUpperCase().replace(/[^A-Z0-9]/g,"");
+  let k = t.match(/^TOAN0*(\d{1,2})$/); if(k){ const n=+k[1]; return n>=1 && n<=MA_TOI_DA ? "TOAN"+n : ""; }
+  k = t.match(/^HS(\d{1,2})$/); return k ? "HS"+k[1].padStart(2,"0") : ""; }
+function luuTen(){ const d=doc(); const g=$("#ma").value.trim(); const c=chuanMa(g); d.ma=st.ma=c||g.toUpperCase(); d.lop=st.lop=$("#lop").value.trim().toUpperCase(); ghi(d); if(c) $("#ma").value=c; return !!c; }
 function batDau(so_, chi){
-  if($("#ma")){ luuTen(); if(!st.ma){ alert("Em nhập mã học sinh trước nhé."); $("#ma").focus(); return; } }
+  if($("#ma")){ const hop=luuTen();
+    if(!st.ma){ alert("Em nhập mã học sinh trước nhé."); $("#ma").focus(); return; }
+    if(!hop){ alert("Mã «"+st.ma+"» chưa đúng. Em gõ đúng mã thầy phát, VD: TOAN7 (chữ TOAN viết liền với số, không dấu)."); $("#ma").focus(); $("#ma").select(); return; } }
   st.bai = DATA.find(b=>String(idB(b))===String(so_)); st.chi = chi || null;
   st.ds = st.bai.ds.map(()=>[null,null,null,null]); st.tl = st.bai.tl.map(()=>""); st.tu = st.bai.tl.map(()=>false);
   veBai();
